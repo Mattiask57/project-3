@@ -143,7 +143,6 @@ def run_game():
     display_board(board)
 
     while game_running:
-
         handle_turn(current_player)
         check_if_game_over()
         flip_player()
