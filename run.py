@@ -9,6 +9,7 @@ game_running = True
 current_player = "X"
 
 winner = None
+
 # ------- Classes -------
 
 
@@ -21,11 +22,12 @@ class Error(Exception):
 
 class SpaceTakenError(Error):
     """
-    Runing when space already taken
+    Running when space already taken
     """
     pass
 
 # ------ Functions --------
+
 
 def check_win():
     """
@@ -49,6 +51,7 @@ def check_win():
         return board[7]
     else:
         return False
+
 
 def check_for_winner():
     """
@@ -82,6 +85,7 @@ def check_if_game_over():
     check_for_winner()
     check_draw()
 
+
 def handle_turn(player):
     """
     Handles player turns and checks valid input.
@@ -109,6 +113,7 @@ def handle_turn(player):
         except SpaceTakenError:
             print("\nError: Space Taken, Try Again\n")
             position = input("\nChoose a position from 1-9: ")
+
 
 def flip_player():
     """
@@ -147,7 +152,6 @@ def run_game():
             exit()
 
 
-
 """
 Welcome message
 """
@@ -160,4 +164,5 @@ print("Top left = 0 and bottom right = 8. Choose a number to place your mark.")
 print("\n_ _ _")
 print("_ _ _")
 print("_ _ _\n")
+
 run_game()
