@@ -1,7 +1,7 @@
 <h1 align="center">Tic tac toe</h1>
 
 
-<h2 align="center"><img src="assets/images/responsive-image.png"></h2>
+<h2 align="center"><img src="assets/images/responsive.png"></h2>
 
 [Live project](https://tic-tac-toe-gamee.herokuapp.com/)
 
