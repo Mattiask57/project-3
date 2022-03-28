@@ -148,7 +148,7 @@ def run_game():
         check_if_game_over()
         flip_player()
         if winner == "X" or winner == "O":
-            print(winner + "wins!")
+            print(winner + " wins!")
             exit()
 
 
