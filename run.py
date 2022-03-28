@@ -8,21 +8,70 @@ game_running = True
 
 current_player = "X"
 
+# ------- Classes -------
+class Error(Exception):
+    """
+    Class for exceptions
+    """
+    pass
+
+
+class SpaceTakenError(Error):
+    """
+    Runing when space already taken
+    """
+    pass
+
 # ------ Functions --------
+
+def check_win():
+    """
+    All possible winning combinations.
+    """
+    if (board[1] == board[2] and board[1] == board[3] and board[1] != "-"):
+        return True
+    elif (board[4] == board[5] and board[4] == board[6] and board[4] != "-"):
+        return True
+    elif (board[7] == board[8] and board[7] == board[9] and board[7] != "-"):
+        return True
+    elif (board[1] == board[4] and board[1] == board[7] and board[1] != "-"):
+        return True
+    elif (board[2] == board[5] and board[2] == board[8] and board[2] != "-"):
+        return True
+    elif (board[3] == board[6] and board[3] == board[9] and board[3] != "-"):
+        return True
+    elif (board[1] == board[5] and board[1] == board[9] and board[1] != "-"):
+        return True
+    elif (board[7] == board[5] and board[7] == board[3] and board[7] != "-"):
+        return True
+    else:
+        return False
+
 
 def run_game():
 
     """
     Running the game
     """
+    display_board(board)
+
+        while game_running:
+
+        handle_turn(current_player)
+        check_if_game_over()
+        swap_player()
+        global board
+        if winner == "X" or winner == "O":
+            print(winner "wins!")
+            exit()
 
 def display_board(board):
     """
     Display board
     """
-    print(board[0] + " | " + board[1] + " | " + board[2])
-    print(board[3] + " | " + board[4] + " | " + board[5])
-    print(board[6] + " | " + board[7] + " | " + board[8])
+    print(board[1] + " | " + board[2] + " | " + board[3])
+    print(board[4] + " | " + board[5] + " | " + board[6])
+    print(board[7] + " | " + board[8] + " | " + board[9])
     print("\n")
 
     def handle_turn(player):
@@ -61,7 +110,7 @@ print("How to play: \n")
 print("You will use a mark (X or O) and place it on the board.")
 print("First one to place three marks in a row wins.")
 print("These underscores is the board positions.")
-print("Top left = 1 and bottom right = 9. Choose a number to place your mark.")
+print("Top left = 0 and bottom right = 8. Choose a number to place your mark.")
 print("\n_ _ _")
 print("_ _ _")
 print("_ _ _\n")
