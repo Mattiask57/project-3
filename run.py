@@ -8,6 +8,7 @@ game_running = True
 
 current_player = "X"
 
+winner = None
 # ------- Classes -------
 class Error(Exception):
     """
@@ -47,6 +48,29 @@ def check_win():
     else:
         return False
 
+def check_draw():
+    """
+    Check if game is draw
+    """
+    for key in board.keys():
+        if board[key] == "-":
+            return False
+
+    return True
+
+def check_if_game_over():
+    """ Check if win or draw """
+    check_win()
+    check_draw()
+
+def flip_player():
+    """ Swaps the current player """
+    global current_player
+    if current_player == "X":
+        current_player = "O"
+    elif current_player == "O":
+        current_player = "X"
+
 
 def run_game():
 
@@ -60,9 +84,8 @@ def run_game():
         handle_turn(current_player)
         check_if_game_over()
         swap_player()
-        global board
         if winner == "X" or winner == "O":
-            print(winner "wins!")
+            print(winner + "wins!")
             exit()
 
 def display_board(board):
@@ -91,7 +114,7 @@ def display_board(board):
                 if board[position] == "-":
                     valid = True
                     board[position] = player
-                    display_board()
+                    display_board(board)
                     return
                 else:
                     raise SpaceTakenError
@@ -101,6 +124,9 @@ def display_board(board):
         except SpaceTakenError:
             print("\nError: Space Taken, Try Again\n")
             position = input("\nChoose a position from 1-9: ")
+
+
+
 
     """
     Welcome message
